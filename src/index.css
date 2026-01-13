@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ===== GLOBAL THEME ===== */
+
+html, body {
+  background: radial-gradient(circle at top, #0b1220, #020409 60%);
+  color: white;
+  font-family: "Inter", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+.accent {
+  color: #3ba9ff;
+  text-shadow: 0 0 10px #3ba9ff40;
+}
+
+
+/* ===== GLASS CARD ===== */
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 12px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+
+/* ===== INPUT FIELDS ===== */
+
+.input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 12px 14px;
+  border-radius: 12px;
+  width: 100%;
+  color: white;
+  outline: none;
+  transition: .25s;
+}
+
+.input::placeholder {
+  color: #b7c4d8;
+}
+
+.input:focus {
+  border-color: #3ba9ff;
+  box-shadow: 0 0 18px #3ba9ff60;
+}
+
+
+/* ===== PREMIUM BUTTON ===== */
+
+.btn-primary {
+  background: linear-gradient(135deg, #3ba9ff, #006dff);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-align: center;
+  transition: .25s ease-in-out;
+  transform: translateY(0);
+  box-shadow: 0 10px 30px rgba(0, 128, 255, .35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 128, 255, .45);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  opacity: .9;
+}
+
+
+/* ===== HEADINGS ===== */
+
+h1, h2 {
+  letter-spacing: .3px;
+  text-shadow: 0 0 6px rgba(255,255,255,.08);
+}
+
+
+
+/* ======================================
+   🚀 NAVBAR — GLASS BLUR + UNDERLINE
+   ====================================== */
+
+.navbar-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 48px;
+}
+
+
+/* LOGO */
+
+.nav-logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.logo-accent {
+  color: #3ba9ff;
+}
+
+
+/* MENU */
+
+.nav-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  position: relative;
+  color: white;
+  font-weight: 500;
+  letter-spacing: .4px;
+  text-decoration: none;
+  transition: .3s;
+}
+
+/* underline animation */
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #3ba9ff;
+  transition: .3s;
+}
+
+.nav-link:hover {
+  color: #3ba9ff;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+/* ACTIVE MENU STATE */
+
+.active-link {
+  color: #3ba9ff;
+}
+.active-link::after {
+  width: 100%;
+}
+
+
+/* CTA BUTTON */
+
+.nav-btn {
+  background: linear-gradient(135deg, #3ba9ff, #0076ff);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  opacity: .9;
+}
+select {
+  background-color: black;
+  color: white;
+}
+
+select option {
+  background-color: black;
+  color: white;
+}
