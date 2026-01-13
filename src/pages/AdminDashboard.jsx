@@ -87,7 +87,8 @@ export default function AdminDashboard() {
       ) : filteredRequirements.length === 0 ? (
         <p>No client requirements found.</p>
       ) : (
-        <div className="grid gap-6">
+        /* ✅ ONLY CHANGE IS HERE */
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredRequirements.map((req) => (
             <motion.div
               key={req._id}

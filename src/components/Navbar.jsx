@@ -1,67 +1,63 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const token = localStorage.getItem("token");
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/signup";
-  };
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="navbar-glass">
-      <div className="nav-container">
-
-        {/* LOGO */}
-        <Link to="/" className="nav-logo">
-          KS<span className="logo-accent">Tech</span>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        
+        {/* Logo */}
+        <Link to="/" className="text-xl font-bold text-white">
+          KS <span className="text-blue-400">Tech</span>
         </Link>
 
-        {/* MENU */}
-        <nav className="nav-menu">
-          {[
-            { to: "/", label: "Home" },
-            { to: "/about", label: "About" },
-            { to: "/services", label: "Services" },
-            { to: "/products", label: "Products" },
-            { to: "/contact", label: "Contact" },
-          ].map((item, i) => (
-            <NavLink
-              key={i}
-              to={item.to}
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active-link" : ""}`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-6 text-sm text-gray-300">
+          <Link to="/" className="hover:text-white">Home</Link>
+          <Link to="/about" className="hover:text-white">About</Link>
+          <Link to="/services" className="hover:text-white">Services</Link>
+          <Link to="/products" className="hover:text-white">Products</Link>
+          <Link to="/contact" className="hover:text-white">Contact</Link>
+        </div>
 
-          {/* ADMIN LINK */}
-          {token && (
-            <NavLink
-              to="/admin"
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active-link" : ""}`
-              }
-            >
-              Admin
-            </NavLink>
-          )}
-        </nav>
-
-        {/* RIGHT SIDE */}
-        {token ? (
-          <button onClick={logout} className="nav-btn">
-            Logout
-          </button>
-        ) : (
-          <Link to="/signup" className="nav-btn">
+        {/* Desktop Button */}
+        <div className="hidden md:block">
+          <Link
+            to="/signup"
+            className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-sm"
+          >
             Get Started
           </Link>
-        )}
+        </div>
 
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setOpen(!open)}
+        >
+          ☰
+        </button>
       </div>
-    </header>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-black border-t border-white/10 px-4 py-6 space-y-4 text-gray-300">
+          <Link onClick={() => setOpen(false)} to="/">Home</Link>
+          <Link onClick={() => setOpen(false)} to="/about">About</Link>
+          <Link onClick={() => setOpen(false)} to="/services">Services</Link>
+          <Link onClick={() => setOpen(false)} to="/products">Products</Link>
+          <Link onClick={() => setOpen(false)} to="/contact">Contact</Link>
+          <Link
+            onClick={() => setOpen(false)}
+            to="/signup"
+            className="block text-center bg-blue-500 text-white py-2 rounded-lg"
+          >
+            Get Started
+          </Link>
+        </div>
+      )}
+    </nav>
   );
 }

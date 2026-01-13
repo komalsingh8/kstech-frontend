@@ -28,54 +28,61 @@ export default function ClientRequirement() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 relative">
+    /* ✅ FIX: push below navbar + responsive padding */
+    <div className="min-h-screen pt-28 px-4 text-white flex justify-center">
 
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="glass-box p-8 w-full max-w-2xl"
-      >
-        <h2 className="text-3xl font-bold text-center mb-4">
-          Submit <span className="accent">Requirement</span>
-        </h2>
-
-        <select
-          className="input bg-black text-white"
-          value={projectType}
-          onChange={(e) => setProjectType(e.target.value)}
+      <div className="w-full max-w-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass-box p-6 sm:p-8"
         >
-          <option value="">Select Service</option>
-          <option>Website Development</option>
-          <option>Mobile App Development</option>
-          <option>UI / UX Design</option>
-        </select>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">
+            Submit <span className="accent">Requirement</span>
+          </h2>
 
-        <select
-          className="input bg-black text-white mt-4"
-          value={budget}
-          onChange={(e) => setBudget(e.target.value)}
-        >
-          <option value="">Select Budget</option>
-          <option>₹5,000 - ₹15,000</option>
-          <option>₹15,000 - ₹30,000</option>
-          <option>₹30,000+</option>
-        </select>
+          {/* Service */}
+          <select
+            className="input bg-black text-white"
+            value={projectType}
+            onChange={(e) => setProjectType(e.target.value)}
+          >
+            <option value="">Select Service</option>
+            <option>Website Development</option>
+            <option>Mobile App Development</option>
+            <option>UI / UX Design</option>
+          </select>
 
-        <textarea
-          className="input mt-4"
-          rows="4"
-          placeholder="Describe your project"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+          {/* Budget */}
+          <select
+            className="input bg-black text-white mt-4"
+            value={budget}
+            onChange={(e) => setBudget(e.target.value)}
+          >
+            <option value="">Select Budget</option>
+            <option>₹5,000 - ₹15,000</option>
+            <option>₹15,000 - ₹30,000</option>
+            <option>₹30,000+</option>
+          </select>
 
-        <button
-          onClick={handleSubmit}
-          className="btn-primary w-full mt-5"
-        >
-          Submit Requirement
-        </button>
-      </motion.div>
+          {/* Description */}
+          <textarea
+            className="input mt-4"
+            rows="4"
+            placeholder="Describe your project"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+
+          {/* Submit */}
+          <button
+            onClick={handleSubmit}
+            className="btn-primary w-full mt-6"
+          >
+            Submit Requirement
+          </button>
+        </motion.div>
+      </div>
     </div>
   );
 }
